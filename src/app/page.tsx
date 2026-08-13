@@ -352,11 +352,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. SERVICES EXPLORER & MARQUEE CLIENTS / PARTNERS */}
-      <section className="py-20 bg-slate-50 border-b border-slate-200">
+      {/* 2. SERVICES EXPLORER & MARQUEE CLIENTS / PARTNERS (ENLARGED) */}
+      <section className="py-24 lg:py-32 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-start">
             
             {/* Left: Services Explorer Accordion */}
             <div className="lg:col-span-6">
@@ -364,11 +364,15 @@ export default function HomePage() {
             </div>
 
             {/* Right: Real Client & OEM Partner Marquee Showcase */}
-            <div className="lg:col-span-6 space-y-8">
-              <div className="space-y-3">
-                <span className="text-xs font-extrabold text-brand-orange uppercase tracking-wider">PROVEN INDUSTRY TRUST</span>
-                <h2 className="text-3xl font-extrabold text-[#064F82] tracking-tight">Our Esteemed Clients & Global Partners</h2>
-                <p className="text-sm text-slate-700 leading-relaxed">
+            <div className="lg:col-span-6 space-y-10">
+              <div className="space-y-4">
+                <span className="text-xs sm:text-sm font-extrabold text-brand-orange uppercase tracking-widest bg-brand-orange/10 border border-brand-orange/30 px-4 py-1.5 rounded-full">
+                  PROVEN INDUSTRY TRUST
+                </span>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#064F82] tracking-tight leading-tight">
+                  Our Esteemed Clients & Global Partners
+                </h2>
+                <p className="text-base sm:text-lg text-slate-700 font-medium leading-relaxed">
                   Chirheha 2E Limited is the authorized indigenous partner for world-class OEMs and top energy operators across Nigeria.
                 </p>
               </div>

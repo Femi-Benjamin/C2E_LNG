@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, CheckCircle2, ChevronRight, ArrowDown } from 'lucide-react';
+import { ChevronDown, CheckCircle2, ChevronRight } from 'lucide-react';
 
 export default function ServicesAccordion() {
   const [activeIdx, setActiveIdx] = useState<number | null>(0);
@@ -84,16 +84,12 @@ export default function ServicesAccordion() {
   ];
 
   return (
-    <div className="bg-white rounded-2xl border-2 border-slate-200 shadow-xl overflow-hidden cad-border-box font-sans">
+    <div className="bg-white rounded-2xl border-2 border-slate-200 shadow-2xl overflow-hidden cad-border-box font-sans">
       
-      <div className="bg-[#064F82] text-white p-6 border-b border-slate-200 flex items-center justify-between">
-        <div>
-          <h3 className="text-2xl font-extrabold tracking-tight">Our Services Explorer</h3>
-          <p className="text-xs text-slate-200 mt-1 font-medium">Click any division to explore internal scrollable technical scope.</p>
-        </div>
-        <div className="hidden sm:flex items-center space-x-1 text-[10px] font-bold text-brand-orange bg-white/10 px-2.5 py-1 rounded-full border border-brand-orange/30">
-          <span>IN-ACCORDION SCROLL ENABLED</span>
-        </div>
+      {/* Header (Clean, without in-scroll badge) */}
+      <div className="bg-[#064F82] text-white p-7 sm:p-8 border-b border-slate-200">
+        <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Our Services Explorer</h3>
+        <p className="text-xs sm:text-sm text-slate-200 mt-1 font-medium">Click any division to explore technical scope details & capabilities.</p>
       </div>
 
       <div className="divide-y divide-slate-200">
@@ -103,65 +99,44 @@ export default function ServicesAccordion() {
             <div key={srv.title} className="transition-colors">
               <button
                 onClick={() => setActiveIdx(isOpen ? null : idx)}
-                className={`w-full text-left p-5 font-extrabold text-xs sm:text-sm tracking-wide uppercase transition-all flex items-center justify-between ${
+                className={`w-full text-left p-6 sm:p-7 font-black text-sm sm:text-base tracking-wide uppercase transition-all flex items-center justify-between ${
                   isOpen
                     ? 'bg-slate-100 text-brand-orange border-l-4 border-brand-orange shadow-inner'
                     : 'text-[#064F82] hover:bg-slate-50 hover:text-brand-orange'
                 }`}
               >
                 <div className="flex items-center space-x-3">
-                  <ChevronRight className={`w-4 h-4 text-brand-orange transition-transform ${isOpen ? 'rotate-90' : ''}`} />
+                  <ChevronRight className={`w-5 h-5 text-brand-orange transition-transform ${isOpen ? 'rotate-90' : ''}`} />
                   <span>{srv.title}</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  {isOpen && (
-                    <span className="text-[10px] font-bold text-brand-orange uppercase hidden sm:inline-block bg-brand-orange/10 px-2 py-0.5 rounded">
-                      SCROLLABLE CONTENT
-                    </span>
-                  )}
-                  <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-                </div>
+                <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {isOpen && (
                 <div className="bg-slate-50 border-t border-slate-200 animate-fade-in relative">
                   
                   {/* Internal Scroll Viewport Container */}
-                  <div className="max-h-64 sm:max-h-72 overflow-y-auto p-6 space-y-4 pr-3 custom-accordion-scroll">
+                  <div className="max-h-80 sm:max-h-96 overflow-y-auto p-6 sm:p-8 space-y-5 pr-4 custom-accordion-scroll">
                     
-                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm">
+                    <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-normal bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
                       {srv.overview}
                     </p>
 
-                    <div className="space-y-2 pt-1">
-                      <div className="flex items-center justify-between">
-                        <h5 className="text-xs font-extrabold text-[#064F82] uppercase tracking-wider">
-                          DIVISION INCLUSIONS & TECHNICAL SCOPE ({srv.items.length} SPECIFICATIONS):
-                        </h5>
-                        <div className="flex items-center space-x-1 text-[10px] font-bold text-slate-500">
-                          <ArrowDown className="w-3 h-3 text-brand-orange animate-bounce" />
-                          <span>SCROLL DOWN</span>
-                        </div>
-                      </div>
+                    <div className="space-y-3 pt-1">
+                      <h5 className="text-xs sm:text-sm font-extrabold text-[#064F82] uppercase tracking-wider">
+                        DIVISION INCLUSIONS & TECHNICAL SCOPE ({srv.items.length} SPECIFICATIONS):
+                      </h5>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {srv.items.map((item, i) => (
-                          <div key={i} className="bg-white p-3 rounded-lg border border-slate-200 flex items-start space-x-2.5 shadow-sm hover:border-brand-orange transition-colors">
-                            <CheckCircle2 className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
-                            <span className="text-xs text-slate-800 font-semibold">{item}</span>
+                          <div key={i} className="bg-white p-3.5 sm:p-4 rounded-xl border border-slate-200 flex items-start space-x-3 shadow-sm hover:border-brand-orange transition-colors">
+                            <CheckCircle2 className="w-5 h-5 text-brand-orange shrink-0 mt-0.5" />
+                            <span className="text-xs sm:text-sm text-slate-800 font-bold leading-snug">{item}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                  </div>
-
-                  {/* Scroll Bar Styling & Footer Hint */}
-                  <div className="bg-slate-100 px-6 py-2 border-t border-slate-200 flex items-center justify-between text-[11px] font-semibold text-slate-600">
-                    <span className="text-[#064F82] font-bold">Use mouse scroll or touch inside box to view all items</span>
-                    <span className="text-brand-orange font-bold flex items-center space-x-1">
-                      <span>{srv.items.length} SCOPE ITEMS</span>
-                    </span>
                   </div>
 
                 </div>
