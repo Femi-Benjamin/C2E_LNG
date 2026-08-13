@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 28% 17%;
+  }
+
+  html, body {
+    background-color: #ffffff;
+    color: #1e293b;
+    font-family: var(--font-sans, ui-sans-serif, system-ui, -apple-system, sans-serif);
+    overflow-x: clip; /* Fixes position: sticky for top nav while clipping horizontal overflow */
+    scroll-behavior: smooth;
+    /* Hide outer browser scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+    background: transparent;
+  }
+}
+
+/* Internal Accordion Custom Visible Scrollbar */
+.custom-accordion-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #064f82 #f1f5f9;
+}
+
+.custom-accordion-scroll::-webkit-scrollbar {
+  display: block !important;
+  width: 6px !important;
+}
+
+.custom-accordion-scroll::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.custom-accordion-scroll::-webkit-scrollbar-thumb {
+  background: #064f82;
+  border-radius: 4px;
+}
+
+.custom-accordion-scroll::-webkit-scrollbar-thumb:hover {
+  background: #ff8400;
+}
+
+/* Light CAD Blueprint Grid Overlay */
+.bg-grid-overlay {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(6, 79, 130, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(6, 79, 130, 0.04) 1px, transparent 1px);
+}
+
+/* Keyframe Animations for Marquee, Fade & Slide Transitions */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeReverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 132, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 132, 0, 0.6);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marqueeReverse 25s linear infinite;
+}
+
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s infinite;
+}
+
+/* Industrial Corner Box Accent Utility */
+.cad-border-box {
+  position: relative;
+}
+
+.cad-border-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #ff8400;
+  border-left: 2px solid #ff8400;
+  pointer-events: none;
+}
+
+.cad-border-box::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #ff8400;
+  border-right: 2px solid #ff8400;
+  pointer-events: none;
+}
