@@ -49,10 +49,10 @@ export default function Header() {
     <>
       {/* Top Corporate Contact & Status Bar */}
       <div className="bg-[#064F82] text-white text-xs py-2.5 px-4 font-sans hidden md:block border-b border-[#04385E]">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
           <div className="flex items-center space-x-5">
-            <div className="flex items-center space-x-2 bg-[#04385E] px-3 py-0.5 rounded-full border border-white/20">
+            <div className="flex items-center space-x-2 bg-[#04385E] px-3 py-1 rounded-full border border-white/20">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-orange"></span>
@@ -86,7 +86,7 @@ export default function Header() {
 
             <button 
               onClick={() => setIsRfpModalOpen(true)}
-              className="bg-brand-orange/20 hover:bg-brand-orange text-brand-orange hover:text-white px-3 py-0.5 rounded-full border border-brand-orange/40 transition-all font-extrabold tracking-wider text-[10px] uppercase flex items-center space-x-1.5 shadow-sm"
+              className="bg-brand-orange/20 hover:bg-brand-orange text-brand-orange hover:text-white px-3 py-1 rounded-full border border-brand-orange/40 transition-all font-extrabold tracking-wider text-[10px] uppercase flex items-center space-x-1.5 shadow-sm"
             >
               <FileText className="w-3 h-3" />
               <span>REQUEST RFP</span>
@@ -96,19 +96,19 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main Navigation Header (ALWAYS FIXED/STICKY AT THE TOP ON SCROLL) */}
+      {/* Main Navigation Header (ALWAYS PERFECTLY ALIGNED WITH MAX-W-7XL CONTENT CONTAINER) */}
       <header 
         className={`w-full z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-slate-200/90 shadow-xl py-3 animate-fade-in-down' 
-            : 'sticky top-0 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-md py-4'
+            ? 'fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-slate-200/90 shadow-xl py-3.5 animate-fade-in-down' 
+            : 'sticky top-0 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-md py-4 sm:py-5'
         }`}
         style={{ position: isScrolled ? 'fixed' : 'sticky', top: 0, zIndex: 50 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
           {/* Brand Name Text */}
-          <Link href="/" className="flex items-center space-x-3 group">
+          <Link href="/" className="flex items-center space-x-3 group shrink-0">
             <div>
               <div className="font-extrabold text-xl sm:text-2xl tracking-tight leading-none">
                 <span className="text-[#064F82]">Chirheha </span>
@@ -120,15 +120,15 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Desktop Nav Items in a floating pill container */}
-          <nav className="hidden lg:flex items-center bg-slate-50/90 border border-slate-200/90 p-1.5 rounded-full shadow-inner space-x-1">
+          {/* Desktop Nav Items in a floating pill container perfectly aligned */}
+          <nav className="hidden lg:flex items-center bg-slate-50/90 border border-slate-200/90 px-3 py-1.5 rounded-full shadow-inner space-x-1">
             {navItems.map((item) => {
               const isActive = pathname === item.path;
               return (
                 <Link
                   key={item.path}
                   href={item.path}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-extrabold transition-all duration-200 flex items-center space-x-1.5 ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-extrabold whitespace-nowrap transition-all duration-200 flex items-center space-x-1.5 ${
                     isActive
                       ? 'bg-white text-brand-orange shadow-sm border border-brand-orange/40'
                       : 'text-slate-700 hover:text-brand-orange hover:bg-white/80'
@@ -142,10 +142,10 @@ export default function Header() {
           </nav>
 
           {/* Desktop Right Action CTA Button */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4 shrink-0">
             <button
               onClick={() => setIsRfpModalOpen(true)}
-              className="px-6 py-2.5 text-xs font-extrabold tracking-wider uppercase text-white bg-gradient-to-r from-brand-orange via-amber-500 to-brand-orange rounded-full shadow-md shadow-brand-orange/20 hover:shadow-lg hover:shadow-brand-orange/30 hover:scale-[1.03] transition-all duration-300 border border-amber-300/30 flex items-center space-x-2 group"
+              className="px-5 py-2.5 text-xs font-extrabold tracking-wider uppercase text-white bg-gradient-to-r from-brand-orange via-amber-500 to-brand-orange rounded-full shadow-md shadow-brand-orange/20 hover:shadow-lg hover:shadow-brand-orange/30 hover:scale-[1.03] transition-all duration-300 border border-amber-300/30 flex items-center space-x-2 group"
             >
               <Wrench className="w-4 h-4 text-white group-hover:rotate-45 transition-transform" />
               <span>Talk to an Engineer</span>
@@ -157,13 +157,13 @@ export default function Header() {
           <div className="lg:hidden flex items-center space-x-3">
             <button
               onClick={() => setIsRfpModalOpen(true)}
-              className="px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-white bg-brand-orange rounded-full shadow-md"
+              className="px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-white bg-brand-orange rounded-full shadow-md"
             >
               RFP
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-slate-700 hover:text-[#064F82] hover:bg-slate-100 focus:outline-none border border-slate-200"
+              className="p-2.5 rounded-xl text-slate-700 hover:text-[#064F82] hover:bg-slate-100 focus:outline-none border border-slate-200"
               aria-label="Toggle Navigation"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -180,7 +180,7 @@ export default function Header() {
                   key={item.path}
                   href={item.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider ${
+                  className={`block px-4 py-3 rounded-lg text-xs sm:text-sm font-extrabold uppercase tracking-wider ${
                     pathname === item.path
                       ? 'bg-slate-100 text-brand-orange border-l-4 border-brand-orange'
                       : 'text-slate-700 hover:bg-slate-50 hover:text-brand-orange'
@@ -197,13 +197,13 @@ export default function Header() {
                   setMobileMenuOpen(false);
                   setIsRfpModalOpen(true);
                 }}
-                className="w-full py-3 text-center text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-brand-orange to-amber-600 rounded-full flex items-center justify-center space-x-2 shadow-md"
+                className="w-full py-3.5 text-center text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-brand-orange to-amber-600 rounded-full flex items-center justify-center space-x-2 shadow-md"
               >
                 <FileText className="w-4 h-4" />
                 <span>Submit Request for Proposal (RFP)</span>
               </button>
 
-              <div className="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs font-sans space-y-1 text-slate-700">
+              <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs font-sans space-y-1 text-slate-700">
                 <div className="flex items-center justify-between font-semibold">
                   <span className="text-[#064F82] font-bold">EKET BASE:</span>
                   <span>eket@c2elng.com</span>
