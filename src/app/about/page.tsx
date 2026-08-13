@@ -3,20 +3,50 @@
 import React, { useState } from 'react';
 import { 
   ShieldCheck, 
-  CheckCircle2, 
   Award, 
   Target, 
   Zap, 
-  Users, 
-  Building2, 
-  ArrowRight,
-  Wrench
+  Wrench,
+  CheckCircle2,
+  HeartHandshake
 } from 'lucide-react';
 import RfpModal from '@/components/RfpModal';
 import Testimonials from '@/components/Testimonials';
 
 export default function AboutPage() {
   const [isRfpOpen, setIsRfpOpen] = useState(false);
+
+  const coreValues = [
+    { letter: 'C', title: "Customer's Satisfaction", desc: 'Exceeding client expectations with dedicated engineering solutions.' },
+    { letter: 'I', title: 'Integrity', desc: 'Unwavering ethics, transparency, and code compliance in all operations.' },
+    { letter: 'T', title: 'Technical Excellence', desc: 'Deploying certified Level III personnel and OEM-grade technology.' },
+    { letter: 'A', title: 'Accountability', desc: 'Ownership of project outcomes, timelines, and statutory standards.' },
+    { letter: 'L', title: 'Leadership', desc: 'Setting benchmarks in indigenous engineering across West Africa.' },
+    { letter: 'S', title: 'Safety', desc: 'Target Zero LTI commitment protecting personnel and asset environments.' }
+  ];
+
+  const technicalPartnerships = [
+    {
+      code: 'A',
+      name: 'Gauging System International (GSI)',
+      description: 'GSI Provides tank gauging and loss control system for liquid bulk storage tanks.'
+    },
+    {
+      code: 'B',
+      name: 'Mascoat',
+      description: 'Innovation thermal & sound protection; Provides thermal coating system for high temperature systems.'
+    },
+    {
+      code: 'C',
+      name: 'SharpWatch',
+      description: 'The SharpWatch Real-Time Condition monitoring platforms solve the following problems: Subsea Leak Detection, Sensor deviation and drift detection, Process value excursion detection, SCM Communication failure, etc.'
+    },
+    {
+      code: 'D',
+      name: 'FIXID FZCO',
+      description: 'Provides innovative solutions for pipeline integrity and maintenance in the oil and gas industry.'
+    }
+  ];
 
   return (
     <div className="bg-white text-slate-800 min-h-screen font-sans">
@@ -40,7 +70,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* EXACT CORPORATE OVERVIEW TEXT FROM C2ELNG.COM */}
+      {/* 1. CORPORATE OVERVIEW */}
       <section className="py-20 bg-white border-b border-slate-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           
@@ -91,32 +121,69 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* VISION & MISSION PILLARS */}
+      {/* 2. VISION, MISSION & CORE VALUES */}
       <section className="py-20 bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
+            {/* VISION */}
             <div className="bg-white rounded-2xl border-2 border-slate-200 p-8 shadow-lg space-y-4 cad-border-box">
               <div className="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-orange">
                 <Target className="w-6 h-6" />
               </div>
 
-              <h3 className="text-2xl font-extrabold text-[#064F82]">Our Corporate Vision</h3>
-              <p className="text-sm text-slate-700 leading-relaxed font-normal">
-                To be West Africa’s most trusted indigenous technical partner, setting international standards in asset integrity, non-destructive testing, pipeline rehabilitation, and industrial thermal automation.
+              <h3 className="text-xl font-extrabold uppercase tracking-wider text-[#064F82]">VISION</h3>
+              <p className="text-sm text-slate-700 leading-relaxed font-medium">
+                To be a world-class engineering service provider in the industry and a reliable partner to our customers respectively.
               </p>
             </div>
 
+            {/* MISSION */}
             <div className="bg-white rounded-2xl border-2 border-slate-200 p-8 shadow-lg space-y-4 cad-border-box">
               <div className="w-12 h-12 rounded-xl bg-[#064F82]/10 border border-[#064F82]/30 flex items-center justify-center text-[#064F82]">
                 <Zap className="w-6 h-6" />
               </div>
 
-              <h3 className="text-2xl font-extrabold text-[#064F82]">Our Mission Statement</h3>
-              <p className="text-sm text-slate-700 leading-relaxed font-normal">
-                To deliver reliable engineering solutions through technical excellence, certified OEM partnerships, state-of-the-art equipment, and an uncompromised commitment to personnel safety and regulatory compliance.
+              <h3 className="text-xl font-extrabold uppercase tracking-wider text-[#064F82]">MISSION</h3>
+              <p className="text-sm text-slate-700 leading-relaxed font-medium">
+                To constantly provide a leading-edge engineering solution to improving asset integrity.
               </p>
+            </div>
+
+            {/* CORE VALUES (CITALS) */}
+            <div className="bg-white rounded-2xl border-2 border-slate-200 p-8 shadow-lg space-y-4 cad-border-box">
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-600">
+                <Award className="w-6 h-6" />
+              </div>
+
+              <h3 className="text-xl font-extrabold uppercase tracking-wider text-[#064F82]">CORE VALUES</h3>
+              <ul className="space-y-1.5 text-xs sm:text-sm font-extrabold text-slate-800">
+                <li className="flex items-center space-x-2">
+                  <span className="text-brand-orange font-black text-base">C</span>
+                  <span>– Customer’s Satisfaction</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <span className="text-[#064F82] font-black text-base">I</span>
+                  <span>– Integrity</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <span className="text-brand-orange font-black text-base">T</span>
+                  <span>– Technical Excellence</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <span className="text-[#064F82] font-black text-base">A</span>
+                  <span>– Accountability</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <span className="text-brand-orange font-black text-base">L</span>
+                  <span>– Leadership</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <span className="text-[#064F82] font-black text-base">S</span>
+                  <span>– Safety</span>
+                </li>
+              </ul>
             </div>
 
           </div>
@@ -124,10 +191,78 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* WHAT CLIENTS SAY TESTIMONIALS SLIDER */}
+      {/* 3. TECHNICAL PARTNERSHIP SECTION */}
+      <section className="py-20 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left: Handshake Graphic Frame */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative">
+                {/* Decorative Offset Background Frame */}
+                <div className="absolute -top-4 -left-4 w-full h-full bg-brand-orange rounded-2xl -z-10" />
+                <div className="absolute -bottom-4 -right-4 w-full h-full bg-[#064F82] rounded-2xl -z-10" />
+                
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <img 
+                    src="/images/partnership_handshake.jpg" 
+                    alt="C2E Technical Partnership" 
+                    className="w-full h-[380px] object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#064F82]/80 via-transparent to-transparent flex items-end p-6 text-white">
+                    <div className="space-y-1">
+                      <span className="text-[10px] font-extrabold uppercase tracking-widest text-brand-orange bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
+                        GLOBAL ALLIANCE
+                      </span>
+                      <h4 className="font-extrabold text-lg text-white">Certified OEM Technical Synergy</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Technical Partnership Details */}
+            <div className="lg:col-span-7 space-y-6">
+              
+              <div className="space-y-2">
+                <span className="text-xs font-extrabold text-brand-orange uppercase tracking-widest bg-brand-orange/10 border border-brand-orange/30 px-3.5 py-1 rounded-full">
+                  OEM STRATEGIC ALLIANCES
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-orange tracking-tight">
+                  Technical Partnership
+                </h2>
+              </div>
+
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal">
+                In C2E Limited, we have strategic alliance with some technical partner (OEM) that allow us to provide quality technical service and solution to our customer. Below are some our key technical partnership:
+              </p>
+
+              <div className="space-y-4 pt-2">
+                {technicalPartnerships.map((partner) => (
+                  <div key={partner.code} className="bg-slate-50 p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm space-y-1 hover:border-brand-orange transition-colors">
+                    <div className="flex items-center space-x-2">
+                      <span className="font-black text-brand-orange text-base">{partner.code}.</span>
+                      <h4 className="font-extrabold text-base text-[#064F82]">{partner.name}</h4>
+                    </div>
+                    <p className="text-xs sm:text-sm text-slate-700 font-medium pl-6 leading-relaxed">
+                      {partner.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. WHAT CLIENTS SAY TESTIMONIALS SLIDER */}
       <Testimonials />
 
-      {/* CALL TO ACTION */}
+      {/* 5. CALL TO ACTION */}
       <section className="py-16 bg-[#064F82] text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <h2 className="text-3xl font-extrabold tracking-tight">Partner With Chirheha 2E Limited Today</h2>
