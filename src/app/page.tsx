@@ -192,22 +192,11 @@ export default function HomePage() {
             
             {/* Left Hero Content */}
             <div className="lg:col-span-7 space-y-6">
-              <motion.div 
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center space-x-2 bg-white border border-brand-orange/40 rounded-full px-4 py-1.5 shadow-sm"
-              >
-                <span className="w-2.5 h-2.5 rounded-full bg-brand-orange animate-ping" />
-                <span className="text-xs font-extrabold uppercase tracking-wider text-brand-orange">
-                  CHIRHEHA 2E LIMITED (C2E) • PROVIDING ENGINEERING SOLUTIONS
-                </span>
-              </motion.div>
-
+              
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
+                transition={{ duration: 0.6 }}
                 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#064F82] tracking-tight leading-[1.12]"
               >
                 Engineered Excellence for <br className="hidden sm:inline" />
@@ -219,7 +208,7 @@ export default function HomePage() {
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-lg sm:text-xl text-slate-700 font-normal leading-relaxed"
               >
                 Nigeria’s premier indigenous technical services firm providing advanced NDT inspection, composite pipeline rehabilitation, Mascoat thermal insulation, GSI automated tank gauging, and OEM procurement.
@@ -228,7 +217,7 @@ export default function HomePage() {
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
                 className="pt-2 flex flex-wrap gap-4 items-center"
               >
                 <button
@@ -279,7 +268,7 @@ export default function HomePage() {
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
             className="mt-16 bg-white border-2 border-slate-200 rounded-2xl p-6 lg:p-8 shadow-xl"
           >
             <div className="flex flex-wrap gap-3 pb-6 border-b border-slate-200">
