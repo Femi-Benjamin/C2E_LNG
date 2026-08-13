@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 export default function Testimonials() {
   const [currentIdx, setCurrentIdx] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   const testimonials = [
     {
@@ -16,19 +17,34 @@ export default function Testimonials() {
     },
     {
       id: 2,
+      quote: "C2E services is very efficient and cost friendly helping us to achieve our objectives in the best possible way.",
+      author: "Umoh Effiom",
+      company: "Profogas Nigeria Limited",
+      role: "Operations Lead"
+    },
+    {
+      id: 3,
       quote: "Chirheha 2E Limited delivered composite pipeline rehabilitation on our high-pressure spool with zero operating shutdown. Their ASNT certified technicians operate with world-class precision.",
       author: "Engr. T. Oladipo",
       company: "Major Niger Delta Pipeline Operator",
       role: "Lead Pipeline Engineer"
     },
     {
-      id: 3,
+      id: 4,
       quote: "The GSI radar tank gauging system installed by C2E transformed our terminal custody transfer accuracy to ±0.5mm precision. Outstanding engineering expertise and response time.",
       author: "M. Abubakar",
       company: "Crude Export Terminal Operations",
       role: "Terminal Operations Supervisor"
     }
   ];
+
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      setCurrentIdx((prev) => (prev + 1) % testimonials.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isHovered, testimonials.length]);
 
   const handleNext = () => {
     setCurrentIdx((prev) => (prev + 1) % testimonials.length);
@@ -53,8 +69,12 @@ export default function Testimonials() {
           </h2>
         </div>
 
-        {/* Carousel Slider Card */}
-        <div className="relative bg-white border-2 border-slate-200 rounded-2xl p-8 sm:p-12 shadow-xl cad-border-box max-w-4xl mx-auto flex items-center justify-between">
+        {/* Auto-Rotating Carousel Slider Card */}
+        <div 
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="relative bg-white border-2 border-slate-200 rounded-2xl p-8 sm:p-12 shadow-xl cad-border-box max-w-4xl mx-auto flex items-center justify-between transition-all"
+        >
           
           {/* Previous Button */}
           <button
@@ -66,7 +86,7 @@ export default function Testimonials() {
           </button>
 
           {/* Testimonial Quote Content */}
-          <div className="px-6 sm:px-10 space-y-6 flex-1 text-center animate-fade-in">
+          <div className="px-6 sm:px-10 space-y-6 flex-1 text-center animate-fade-in" key={current.id}>
             <div className="flex justify-center text-brand-orange">
               <Quote className="w-12 h-12 text-brand-orange/80" />
             </div>
@@ -94,14 +114,15 @@ export default function Testimonials() {
         </div>
 
         {/* Dots Navigation */}
-        <div className="flex justify-center space-x-2 pt-2">
+        <div className="flex justify-center items-center space-x-2 pt-2">
           {testimonials.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentIdx(idx)}
-              className={`h-2.5 rounded-full transition-all ${
+              className={`h-2.5 rounded-full transition-all duration-300 ${
                 currentIdx === idx ? 'w-8 bg-brand-orange' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
               }`}
+              aria-label={`Go to testimonial ${idx + 1}`}
             />
           ))}
         </div>
