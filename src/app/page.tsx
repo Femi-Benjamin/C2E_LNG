@@ -20,6 +20,7 @@ import {
 import RfpModal from '@/components/RfpModal';
 import MarqueeLogos from '@/components/MarqueeLogos';
 import ServicesAccordion from '@/components/ServicesAccordion';
+import Testimonials from '@/components/Testimonials';
 
 export default function HomePage() {
   const [isRfpOpen, setIsRfpOpen] = useState(false);
@@ -357,7 +358,7 @@ export default function HomePage() {
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
-            {/* Left: Services Explorer Accordion (matching c2elng.com layout) */}
+            {/* Left: Services Explorer Accordion */}
             <div className="lg:col-span-6">
               <ServicesAccordion />
             </div>
@@ -633,7 +634,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. CALL TO ACTION BANNER */}
+      {/* 6. WHAT CLIENTS SAY TESTIMONIALS */}
+      <Testimonials />
+
+      {/* 7. CALL TO ACTION BANNER */}
       <section className="py-20 bg-[#064F82] text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
           <motion.h2 
